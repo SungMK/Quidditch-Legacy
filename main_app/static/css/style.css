@@ -1,0 +1,25 @@
+@import url('https://fonts.cdnfonts.com/css/harry-potter');
+
+body {
+    font-family: 'Harry Potter', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+  
+main {
+    flex: 1 0 auto;
+}
+  
+footer.page-footer {
+    padding-top: 0;
+    text-align: right;
+}
+
+nav {
+    background-color: #740001;
+}
+
+.page-footer {
+    background-color: #740001;
+}
