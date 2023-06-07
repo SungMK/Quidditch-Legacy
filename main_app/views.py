@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Player, Broomstick
 
 teams = [
 	{'name': 'team1', 'description': 'hogwarts'},
@@ -16,6 +17,9 @@ def about(request):
 
 def contact(request):
 	return render(request, 'contact.html')
+
+def player_index(request):
+	return render(request)
 
 def team_index(request):
 	return render(request, 'teams/index.html', {'teams': teams})

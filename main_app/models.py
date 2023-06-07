@@ -20,6 +20,14 @@ class Player(models.Model):
     def get_absolute_url(self):
         return reverse('detail', kwargs={'player_id': self.id})
     
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=250)
+    players = models.ManyToManyField(Player)
+
+    def __str__(self):
+        return f' Team {self.name}, {self.description}, starring: {self.players}'
+    
 class Broomstick(models.Model):
     CHOICES = [
         ('Air Wave Gold'),
