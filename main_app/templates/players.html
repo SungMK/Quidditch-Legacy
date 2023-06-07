@@ -18,7 +18,19 @@
             <div class="card-content">
                 <p><strong>Species:</strong> {{ character.species }}</p>
                 <p><strong>Gender:</strong> {{ character.gender }}</p>
-                <p><strong>House:</strong> {{ character.house }}</p>
+                <p><strong>House:</strong> 
+                    {% if character.house == "Gryffindor" %}
+                        <span style="color: #740001;">{{ character.house }}</span>
+                    {% elif character.house == "Slytherin" %}
+                        <span style="color: #1a472a;">{{ character.house }}</span>
+                    {% elif character.house == "Ravenclaw" %}
+                        <span style="color: #0e1a40;">{{ character.house }}</span>
+                    {% elif character.house == "Hufflepuff" %}
+                        <span style="color: #ecb939;">{{ character.house }}</span>
+                        {% elif character.house == "" %}
+                        N/A
+                    {% endif %}
+                </p>
                 <p><strong>Wizard:</strong> {% if character.wizard %}Yes{% else %}No{% endif %}</p>
                 <p><strong>Hogwarts Student:</strong> {% if character.hogwartsStudent %}Yes{% else %}No{% endif %}</p>
                 <p><strong>Hogwarts Staff:</strong> {% if character.hogwartsStaff %}Yes{% else %}No{% endif %}</p>
