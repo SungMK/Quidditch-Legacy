@@ -27,14 +27,38 @@
                         <span style="color: #0e1a40;">{{ character.house }}</span>
                     {% elif character.house == "Hufflepuff" %}
                         <span style="color: #ecb939;">{{ character.house }}</span>
-                        {% elif character.house == "" %}
+                    {% elif character.house == "" %}
                         N/A
                     {% endif %}
                 </p>
-                <p><strong>Wizard:</strong> {% if character.wizard %}Yes{% else %}No{% endif %}</p>
-                <p><strong>Hogwarts Student:</strong> {% if character.hogwartsStudent %}Yes{% else %}No{% endif %}</p>
-                <p><strong>Hogwarts Staff:</strong> {% if character.hogwartsStaff %}Yes{% else %}No{% endif %}</p>
-                <p><strong>Alive:</strong> {% if character.alive %}Yes{% else %}No{% endif %}</p>
+                <p><strong>Wizard:</strong> 
+                    {% if character.wizard %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Hogwarts Student:</strong> 
+                    {% if character.hogwartsStudent %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Hogwarts Staff:</strong> 
+                    {% if character.hogwartsStaff %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Alive:</strong> 
+                    {% if character.alive %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
