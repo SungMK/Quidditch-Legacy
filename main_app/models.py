@@ -11,7 +11,6 @@ class Player(models.Model):
     hogwarts_student=models.BooleanField()
     hogwarts_staff=models.BooleanField()
     alive=models.BooleanField()
-    image=models.URLField()
 
     def __str__(self):
         return self.name

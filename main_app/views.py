@@ -14,3 +14,7 @@ def contact(request):
 def teams_index(request):
 	teams = Team.objects.all()
 	return render(request, 'teams/index.html', {'teams': teams})
+
+def teams_detail(request, team_id):
+	team = Team.objects.get(id=team_id)
+	return render(request, 'teams/detail.html', {'team': team})
