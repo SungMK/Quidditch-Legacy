@@ -2,14 +2,6 @@ from django.shortcuts import render
 from .models import Team, Player
 from django.contrib.auth.decorators import login_required
 
-teams = [
-	{'name': 'team1', 'description': 'hogwarts'},
-	{'name': 'team2', 'description': 'UK'},
-	{'name': 'team3', 'description': 'Germany'},
-	{'name': 'team4', 'description': 'Japan'},
-	{'name': 'team5', 'description': 'Australia'},
-]
-
 def home(request):
 	return render(request, 'home.html')
 
@@ -19,8 +11,6 @@ def about(request):
 def contact(request):
 	return render(request, 'contact.html')
 
-def player_index(request):
-	return render(request)
-
-def team_index(request):
+def teams_index(request):
+	teams = Team.objects.all()
 	return render(request, 'teams/index.html', {'teams': teams})
