@@ -17,7 +17,7 @@ class Player(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('detail', kwargs={'player_id': self.id})
+        return reverse('players_detail', kwargs={'pk': self.id})
     
 class Team(models.Model):
     name = models.CharField(max_length=100)
@@ -27,6 +27,9 @@ class Team(models.Model):
 
     def __str__(self):
         return f' Team {self.name}, {self.description}, starring: {self.players}'
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'team_id': self.id})
     
 class Broomstick(models.Model):
     CHOICES = [
