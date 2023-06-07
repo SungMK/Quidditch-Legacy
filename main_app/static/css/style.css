@@ -1,11 +1,19 @@
-@import url('https://fonts.cdnfonts.com/css/harry-potter');
+@import url('https://fonts.cdnfonts.com/css/harry-potter'); /* Harry Potter Font */
+@import url('https://fonts.cdnfonts.com/css/harrypotter7'); /* Blocky Harry Potter Font */
+@import url('https://fonts.cdnfonts.com/css/magic-school-one'); /* More Readable, Medieval Font */
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'HarryPotter7', sans-serif;
 }
-  
+
+.alternate-font {
+    font-family: 'Magic School One', sans-serif;
+    font-family: 'Magic School Two', sans-serif;
+}
+
 main {
     flex: 1 0 auto;
 }
