@@ -12,7 +12,6 @@ class Player(models.Model):
     hogwarts_staff=models.BooleanField()
     alive=models.BooleanField()
     image=models.URLField()
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -24,6 +23,7 @@ class Team(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
     players = models.ManyToManyField(Player)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f' Team {self.name}, {self.description}, starring: {self.players}'
