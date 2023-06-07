@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import Player, Broomstick
+from .models import Team, Player
+from django.contrib.auth.decorators import login_required
 
 teams = [
 	{'name': 'team1', 'description': 'hogwarts'},
