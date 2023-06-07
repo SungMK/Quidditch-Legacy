@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>View My Team</h1>
+{% for team in teams %}
+
+<p>Team Name: {{ team.name }}</p>
+<p>Team Description: {{ team.description }}</p>
+
+{% endfor %}
+
+{% endblock %}
