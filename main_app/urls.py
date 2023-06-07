@@ -8,4 +8,5 @@ urlpatterns = [
     path('teams/', views.teams_index, name='index'),
     path('teams/<int:team_id>/', views.teams_detail, name='detail'),
     path('players/', views.get_characters, name='players'),
+    path('teams/create/', views.TeamCreate.as_view(), name='teams_create'),
 ]
