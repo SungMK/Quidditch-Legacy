@@ -36,3 +36,19 @@ nav {
 .hogwarts {
     font-family: 'Harry Potter', sans-serif;
 }
+
+/* Test */
+.character-image {
+    max-width: 100%;
+    height: auto;
+}
+
+.card-image {
+    height: 400px;
+}
+
+.card-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="hogwarts">List of All Characters</h1>
+
+<div class="row">
+    {% for character in characters %}
+    <div class="col s12 m6 l3"> <!-- Adjust the column classes -->
+        <div class="card">
+            <div class="card-image">
+                {% if character.image != "" %}
+                    <img src="{{ character.image }}" alt="{{ character.name }}">
+                {% else %}
+                    <img src="../../static/placeholder.jpg" alt="Placeholder Image">
+                {% endif %}
+                <span class="card-title">{{ character.name }}</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Species:</strong> {{ character.species }}</p>
+                <p><strong>Gender:</strong> {{ character.gender }}</p>
+                <p><strong>House:</strong> {{ character.house }}</p>
+                <p><strong>Wizard:</strong> {% if character.wizard %}Yes{% else %}No{% endif %}</p>
+                <p><strong>Hogwarts Student:</strong> {% if character.hogwartsStudent %}Yes{% else %}No{% endif %}</p>
+                <p><strong>Hogwarts Staff:</strong> {% if character.hogwartsStaff %}Yes{% else %}No{% endif %}</p>
+                <p><strong>Alive:</strong> {% if character.alive %}Yes{% else %}No{% endif %}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

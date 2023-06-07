@@ -3,14 +3,19 @@
 
 <h1 class="hogwarts">View My Team</h1>
 {% for team in teams %}
-
-<p>Team Name: {{ team.name }}</p>
-<p>Team Description: {{ team.description }}</p>
-<p>Players:
-    {% for player in team.players.all %}
-    {{ player }}
-    {% endfor %}
-</p>
+<a href="{% url 'detail' team.id %}">
+    <div class="card">
+        <div class="card-content">
+            <p>Team Name: {{ team.name }}</p>
+            <p>Team Description: {{ team.description }}</p>
+            <p>Players:
+            {% for player in team.players.all %}
+                {{ player.name }},
+            {% endfor %}
+            </p>
+        </div>
+    </div>
+</a>
 {% endfor %}
 
 {% endblock %}
