@@ -31,7 +31,7 @@ class Team(models.Model):
         return reverse('detail', kwargs={'team_id': self.id})
     
 class Broomstick(models.Model):
-    CHOICES = [
+    CHOICES = (
         ('AWG', 'Air Wave Gold'),
         ('ASF', 'Australian Flyabout'),
         ('BBTL', 'Bluebottle'),
@@ -69,7 +69,7 @@ class Broomstick(models.Model):
         ('TW90', 'Twigger 90'),
         ('VARA', 'Varápidos'),
         ('YAJI', 'Yajirushi')
-    ]
+    )
 
     choice = models.CharField(max_length=100, choices=CHOICES, default='Air Wave Gold')
 
