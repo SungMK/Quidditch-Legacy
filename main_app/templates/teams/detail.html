@@ -7,6 +7,10 @@
         <p>Description: {{ team.description|linebreaks }}</p>
         <p>Players: {{ team.players }}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'teams_update' team.id %}">Edit</a>
+        <a href="{% url 'teams_delete' team.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}

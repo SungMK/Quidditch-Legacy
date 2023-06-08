@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Just to confirm...</h1>
+
+    <h4>Are you sure you want to delete <span class="blue-text">{{ object.name }}</span>?</h4>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn red">
+        <a class="btn blue" href="{% url 'detail' team.id %}">Cancel</a>
+    </form>
+    <br>
+    <iframe src="https://giphy.com/embed/13cfAjuF9oNBu4NL5J"></iframe>
+{% endblock %}

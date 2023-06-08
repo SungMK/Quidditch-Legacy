@@ -1,5 +1,5 @@
 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.shortcuts import render
@@ -39,3 +39,11 @@ class TeamCreate(LoginRequiredMixin, CreateView):
 	def form_valid(self, form):
 		form.instance.user = self.request.user
 		return super().form_valid(form)
+	
+class TeamUpdate(LoginRequiredMixin, UpdateView):
+	model = Team
+	fields = ['name', 'description'] # Add ,'players' later
+
+class TeamDelete(LoginRequiredMixin, DeleteView):
+	model = Team
+	success_url = '/teams/'
