@@ -4,6 +4,39 @@
 
 <h1 class="hogwarts">About Quidditch and Quidditch Legacy</h1>
 <br>
-<h4>What is Quidditch?</h4>
+
+<h4>Quidditch</h4>
+<div>
+    <a href="https://harrypotter.fandom.com/wiki/Quidditch">Overview</a>
+</div>
+<div>
+    <a href="https://harrypotter.fandom.com/wiki/Quidditch#History">History</a>
+</div>
+<div>
+    <a href="https://harrypotter.fandom.com/wiki/Quidditch#Rules">Rules</a>
+</div>
+<div>
+    <a href="https://harrypotter.fandom.com/wiki/Quidditch#Equipment">Equipment</a>
+</div>
+
+<h4>Quidditch Legacy</h4>
+<div>
+    <a href="https://github.com/SungMK/Quidditch-Legacy">Learn More</a>
+</div>>
+
+<h4>Houses</h4>
+<div class="carousel">
+    <a class="carousel-item" href="https://harrypotter.fandom.com/wiki/Gryffindor"><img src="https://static.wikia.nocookie.net/harrypotter/images/b/b1/Gryffindor_ClearBG.png/revision/latest/scale-to-width-down/1000?cb=20190222162949"></a>
+    <a class="carousel-item" href="https://harrypotter.fandom.com/wiki/Hufflepuff"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/06/Hufflepuff_ClearBG.png/revision/latest?cb=20161020182518"></a>
+    <a class="carousel-item" href="https://harrypotter.fandom.com/wiki/Ravenclaw"><img src="https://static.wikia.nocookie.net/harrypotter/images/7/71/Ravenclaw_ClearBG.png/revision/latest?cb=20161020182442"></a>
+    <a class="carousel-item" href="https://harrypotter.fandom.com/wiki/Slytherin"><img src="https://static.wikia.nocookie.net/harrypotter/images/0/00/Slytherin_ClearBG.png/revision/latest?cb=20161020182557"></a>
+</div>
+  
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const elems = document.querySelectorAll('.carousel');
+      const instances = M.Carousel.init(elems);
+    });
+</script>
 
 {% endblock %}
