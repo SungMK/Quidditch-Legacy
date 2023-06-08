@@ -8,8 +8,8 @@
         <p>Players: {{ team.players }}</p>
     </div>
     <div class="card-action">
-        <a href="{% url 'teams_update' team.id %}">Edit</a>
-        <a href="{% url 'teams_delete' team.id %}">Delete</a>
+        <a href="{% url 'teams_update' team.id %}" class="btn cyan">Edit</a>
+        <a href="{% url 'teams_delete' team.id %}" class="btn red">Delete</a>
     </div>
 </div>
 
