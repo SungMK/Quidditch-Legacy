@@ -70,6 +70,7 @@ h1 {
 .home-title {
     -webkit-text-stroke: 2px silver;
     color: #372e29;
+    margin-top: 65px;
 }
 
 .home-text {
