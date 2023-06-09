@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="hogwarts">View My Teams</h1>
+<h1 class="hogwarts">My Teams</h1>
+<br>
+
 {% for team in teams %}
 <a href="{% url 'detail' team.id %}">
     <div class="card">
