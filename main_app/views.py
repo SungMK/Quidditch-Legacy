@@ -31,6 +31,29 @@ def get_characters(request, limit=50):
     characters = response[:limit]
     return render(request, 'players.html', {'characters': characters})
 
+def search_players(request):
+    if request.method == 'GET':
+        # Retrieve the search filters from the request
+        name = request.GET.get('name')
+        house = request.GET.get('house')
+        species = request.GET.get('species')
+
+        # Prepare the search query
+        player_query = Player.objects.all()
+
+        if name:
+            player_query = player_query.filter(name__icontains=name)
+        if house:
+            player_query = player_query.filter(house=house)
+        if species:
+            player_query = player_query.filter(species=species)
+
+        # Execute the search query
+        players = player_query[:50]  # Limit the number of results to 50
+
+        # Render the search results using the 'players.html' template
+        return render(request, 'players.html', {'characters': players})
+
 # Class-based Views
 class TeamCreate(LoginRequiredMixin, CreateView):
 	model = Team

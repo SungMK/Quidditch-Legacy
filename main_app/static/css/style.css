@@ -68,12 +68,14 @@ h1 {
 }
 
 .home-title {
-    -webkit-text-stroke: 1px silver;
+    -webkit-text-stroke: 2px silver;
+    color: #372e29;
 }
 
 .home-text {
     text-align: center;
     -webkit-text-stroke: 1px silver;
+    color: #372e29;
 }
 
 form > table > tbody > tr > th > label {
@@ -91,8 +93,8 @@ form > table > tbody > tr > th > label {
 }
 
 .background-image {
-    background-image: url("/static/Quidditch-Home.jpg");
-    background-size: contain;
+    background-image: url("/static/HomepageBackground.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     width: 100vw;
