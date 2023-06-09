@@ -44,8 +44,20 @@ def teams_index(request):
 
 @login_required
 def teams_detail(request, team_id):
-	team = Team.objects.get(id=team_id)
-	return render(request, 'teams/detail.html', {'team': team})
+    team = Team.objects.get(id=team_id)
+    id_list = team.players.all().values_list('id', flat=True)
+    players_team_doesnt_have = Player.objects.exclude(id__in=id_list)
+    return render(request, 'teams/detail.html', {'team': team, 'players': players_team_doesnt_have})
+
+@login_required
+def assoc_player(request, team_id, player_id):
+    Team.objects.get(id=team_id).players.add(player_id)
+    return redirect('detail', team_id=team_id)
+
+@login_required
+def unassoc_player(request, team_id, player_id):
+    Team.objects.get(id=team_id).players.remove(player_id)
+    return redirect('detail', team_id=team_id)
 	
 # API Functions:
 
@@ -63,30 +75,6 @@ def get_characters(request):
     response = requests.get(url).json()
     characters = response
     return render(request, 'main_app/characters_list.html', {'characters': characters})
-
-@login_required
-def search_players(request):
-    if request.method == 'GET':
-        # Retrieve the search filters from the request
-        name = request.GET.get('name')
-        house = request.GET.get('house')
-        species = request.GET.get('species')
-
-        # Prepare the search query
-        player_query = Player.objects.all()
-
-        if name:
-            player_query = player_query.filter(name__icontains=name)
-        if house:
-            player_query = player_query.filter(house=house)
-        if species:
-            player_query = player_query.filter(species=species)
-
-        # Execute the search query
-        players = player_query[:50]  # Limit the number of results to 50
-
-        # Render the search results using the 'players.html' template
-        return render(request, 'main_app/players_list.html', {'characters': players})
 
 # Class-based Views:
 
