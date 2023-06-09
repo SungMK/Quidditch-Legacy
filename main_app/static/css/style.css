@@ -120,6 +120,7 @@ h1 {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font-family: 'HarryPotter7', sans-serif;
 }
 
 .registration-form-container label {
@@ -150,6 +151,7 @@ h1 {
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    font-family: 'HarryPotter7', sans-serif;
 }
 
 .team-form-container label {
