@@ -4,20 +4,20 @@
 
 <br>
 {% if object %}
-    <h1 class="hogwarts">Edit Team</h1>
+    <h1 class="hogwarts">Edit Player</h1>
 {% else %}
-    <h1 class="hogwarts">Add Team</h1>
+    <h1 class="hogwarts">Add Player</h1>
 {% endif %}
 
 <div class="team-form-container">
-    <form action="" method="POST" autocomplete="off">
+    <form action="" method="post">
         {% csrf_token %}
         <table>
         {{ form.as_table }}
         </table>
         <br>
         <div class="team-form-button">
-            <button type="submit" class="team-form-submit">{% if object %} Update Team {% else %} Create Team {% endif %}</button>
+            <input class="btn blue" type="submit" value="{% if object %} Update Player {% else %} Add Player {% endif %}">
         </div>
     </form>
 </div>

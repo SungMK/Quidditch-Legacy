@@ -26,7 +26,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('index')
+            return redirect('/')
         else:
             error_message = 'Invalid Signup - Try Again'
     # GET request
@@ -48,12 +48,21 @@ def teams_detail(request, team_id):
 	return render(request, 'teams/detail.html', {'team': team})
 	
 # API Functions:
-@login_required
-def get_characters(request, limit=50):
-    url = f'https://hp-api.onrender.com/api/characters?limit={limit}'
+
+# With Limit
+# @login_required
+# def get_characters(request, limit=500):
+#     url = f'https://hp-api.onrender.com/api/characters?limit={limit}'
+#     response = requests.get(url).json()
+#     characters = response[:limit]
+#     return render(request, 'main_app/players.html', {'characters': characters})
+
+# Without Limit
+def get_characters(request):
+    url = 'https://hp-api.onrender.com/api/characters'
     response = requests.get(url).json()
-    characters = response[:limit]
-    return render(request, 'players.html', {'characters': characters})
+    characters = response
+    return render(request, 'main_app/characters_list.html', {'characters': characters})
 
 @login_required
 def search_players(request):
@@ -77,12 +86,14 @@ def search_players(request):
         players = player_query[:50]  # Limit the number of results to 50
 
         # Render the search results using the 'players.html' template
-        return render(request, 'players.html', {'characters': players})
+        return render(request, 'main_app/players_list.html', {'characters': players})
 
-# Class-based Views
+# Class-based Views:
+
+#Team Functions:
 class TeamCreate(LoginRequiredMixin, CreateView):
 	model = Team
-	fields = ['name', 'description'] # Add ,'players' later
+	fields = ['name', 'description']
 
 	def form_valid(self, form):
 		form.instance.user = self.request.user
@@ -90,8 +101,27 @@ class TeamCreate(LoginRequiredMixin, CreateView):
 	
 class TeamUpdate(LoginRequiredMixin, UpdateView):
 	model = Team
-	fields = ['name', 'description'] # Add ,'players' later
+	fields = ['name', 'description']
 
 class TeamDelete(LoginRequiredMixin, DeleteView):
 	model = Team
 	success_url = '/teams/'
+
+# Player Functions:
+class PlayerCreate(LoginRequiredMixin, CreateView):
+    model = Player
+    fields = ['name', 'species', 'gender', 'house']       
+
+class PlayerList(LoginRequiredMixin, ListView):
+    model = Player
+
+class PlayerDetail(LoginRequiredMixin, DetailView):
+    model = Player
+
+class PlayerUpdate(LoginRequiredMixin, UpdateView):
+    model = Player
+    fields = ['name', 'species', 'gender', 'house']   
+
+class PlayerDelete(LoginRequiredMixin, DeleteView):
+    model = Player
+    success_url = '/players/'

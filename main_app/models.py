@@ -7,29 +7,17 @@ class Player(models.Model):
     species=models.CharField(max_length=100)
     gender=models.CharField(max_length=100)
     house=models.CharField(max_length=100)
-    wizard=models.BooleanField()
-    hogwarts_student=models.BooleanField()
-    hogwarts_staff=models.BooleanField()
-    alive=models.BooleanField()
+    wizard=models.BooleanField(default=False)
+    hogwarts_student=models.BooleanField(default=False)
+    hogwarts_staff=models.BooleanField(default=False)
+    alive=models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
         return reverse('players_detail', kwargs={'pk': self.id})
-    
-class Team(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=250)
-    players = models.ManyToManyField(Player)
-    user=models.ForeignKey(User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f' Team {self.name}, {self.description}, starring: {self.players}'
-    
-    def get_absolute_url(self):
-        return reverse('detail', kwargs={'team_id': self.id})
-    
+        
 class Broomstick(models.Model):
     CHOICES = (
         ('AWG', 'Air Wave Gold'),
@@ -73,8 +61,18 @@ class Broomstick(models.Model):
 
     choice = models.CharField(max_length=100, choices=CHOICES, default='Air Wave Gold')
 
-    player = models.ForeignKey(Player, on_delete=models.CASCADE)
-
     def __str__(self):
         return self.choice
 
+class Team(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=250)
+    players = models.ManyToManyField(Player)
+    broomsticks = models.ManyToManyField(Broomstick)
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f' Team {self.name}, {self.description}, starring: {self.players}'
+    
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'team_id': self.id})

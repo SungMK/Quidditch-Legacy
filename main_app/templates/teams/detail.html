@@ -5,7 +5,12 @@
     <div class="card-content">
         <span class="card-title">{{ team.name }}</span>
         <p>Description: {{ team.description|linebreaks }}</p>
-        <p>Players: {{ team.players }}</p>
+        <p>Players:</p>
+        <ul>
+            {% for player in team.players.all %}
+            <li>{{ player.name }}</li>
+            {% endfor %}
+        </ul>
     </div>
     <div class="card-action">
         <a href="{% url 'teams_update' team.id %}" class="btn cyan">Edit</a>
