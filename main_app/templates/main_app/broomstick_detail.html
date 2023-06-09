@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="hogwarts">Broomstick Detail</h1>
+<br>
+
+<div class="card">
+    <div class="card-content">
+      <span class="card-title">{{ broomstick.get_choice_display }}</span>
+      <p>{{ broomstick.choice }}</p>
+    </div>
+     <div class="card-action">
+        <a href="{% url 'broomsticks_update' broomstick.id %}" class="btn cyan">Edit</a>
+        <a href="{% url 'broomsticks_delete' broomstick.id %}" class="btn red">Delete</a>
+    </div>
+  </div>
+
+{% endblock %}

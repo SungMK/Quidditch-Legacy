@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+{% if object %}
+    <h1 class="hogwarts">Edit Broomstick</h1>
+{% else %}
+    <h1 class="hogwarts">Add Broomstick</h1>
+{% endif %}
+
+<div class="team-form-container">
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="Broomstick Choices">View Broomsticks: </label>
+        <input id="your_name" type="select" name="your_name" value="{{ current_name }}">
+        <div class="team-form-button">
+            <input class="btn blue" type="submit" value="{% if object %} Update Broomstick {% else %} Add Broomstick {% endif %}">
+        </div>
+    </form>
+</div>
+
+{% endblock %}

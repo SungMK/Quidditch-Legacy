@@ -4,7 +4,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
-from .models import Team, Player
+from .models import Team, Player, Broomstick
 from django.contrib.auth.decorators import login_required
 import requests
 
@@ -47,7 +47,10 @@ def teams_detail(request, team_id):
     team = Team.objects.get(id=team_id)
     id_list = team.players.all().values_list('id', flat=True)
     players_team_doesnt_have = Player.objects.exclude(id__in=id_list)
-    return render(request, 'teams/detail.html', {'team': team, 'players': players_team_doesnt_have})
+
+    broomstick_list = team.broomsticks.all().values_list('id', flat=True)
+    broomsticks_team_doesnt_have = Broomstick.objects.exclude(id__in=broomstick_list)
+    return render(request, 'teams/detail.html', {'team': team, 'players': players_team_doesnt_have, 'broomsticks': broomsticks_team_doesnt_have})
 
 @login_required
 def assoc_player(request, team_id, player_id):
@@ -58,7 +61,17 @@ def assoc_player(request, team_id, player_id):
 def unassoc_player(request, team_id, player_id):
     Team.objects.get(id=team_id).players.remove(player_id)
     return redirect('detail', team_id=team_id)
-	
+
+@login_required
+def assoc_broomstick(request, team_id, broomstick_id):
+    Team.objects.get(id=team_id).broomsticks.add(broomstick_id)
+    return redirect('detail', team_id=team_id)
+
+@login_required
+def unassoc_broomstick(request, team_id, broomstick_id):
+    Team.objects.get(id=team_id).broomsticks.remove(broomstick_id)
+    return redirect('detail', team_id=team_id)
+
 # API Functions:
 
 # With Limit
@@ -78,7 +91,7 @@ def get_characters(request):
 
 # Class-based Views:
 
-#Team Functions:
+# Team Functions:
 class TeamCreate(LoginRequiredMixin, CreateView):
 	model = Team
 	fields = ['name', 'description']
@@ -113,3 +126,23 @@ class PlayerUpdate(LoginRequiredMixin, UpdateView):
 class PlayerDelete(LoginRequiredMixin, DeleteView):
     model = Player
     success_url = '/players/'
+
+# Broomstick Functions:
+
+class BroomstickCreate(LoginRequiredMixin, CreateView):
+    model = Broomstick
+    fields = '__all__'
+
+class BroomstickList(LoginRequiredMixin, ListView):
+    model = Broomstick
+
+class BroomstickDetail(LoginRequiredMixin, DetailView):
+    model = Broomstick
+
+class BroomstickUpdate(LoginRequiredMixin, UpdateView):
+    model = Broomstick
+    fields = '__all__'
+
+class BroomstickDelete(LoginRequiredMixin, DeleteView):
+    model = Broomstick
+    success_url = '/broomsticks/'

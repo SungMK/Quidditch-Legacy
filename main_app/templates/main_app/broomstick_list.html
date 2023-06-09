@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="hogwarts">My Broomsticks</h1>
+<br>
+
+{% for broomstick in object_list %}
+
+<a href="{% url 'broomsticks_detail' broomstick.id %}">
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ broomstick.get_choice_display }}</span> 
+        </div>
+    </div>
+</a>
+
+{% endfor %}
+
+{% endblock %}
