@@ -1,8 +1,9 @@
-
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
+from django.shortcuts import render, redirect
 from .models import Team, Player
 from django.contrib.auth.decorators import login_required
 import requests
@@ -16,21 +17,45 @@ def about(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+def signup(request):
+    # POST request
+    error_message = ''
+        # user is signing up with a form submission
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')
+        else:
+            error_message = 'Invalid Signup - Try Again'
+    # GET request
+        # user is navigating to signup page to fill out form
+    form = UserCreationForm()
+    return render(request, 'registration/signup.html', {
+        'form': form,
+        'error': error_message
+    })
+
+@login_required
 def teams_index(request):
-	teams = Team.objects.all()
+	teams = Team.objects.filter(user=request.user)
 	return render(request, 'teams/index.html', {'teams': teams})
 
+@login_required
 def teams_detail(request, team_id):
 	team = Team.objects.get(id=team_id)
 	return render(request, 'teams/detail.html', {'team': team})
-
+	
 # API Functions:
+@login_required
 def get_characters(request, limit=50):
     url = f'https://hp-api.onrender.com/api/characters?limit={limit}'
     response = requests.get(url).json()
     characters = response[:limit]
     return render(request, 'players.html', {'characters': characters})
 
+@login_required
 def search_players(request):
     if request.method == 'GET':
         # Retrieve the search filters from the request
