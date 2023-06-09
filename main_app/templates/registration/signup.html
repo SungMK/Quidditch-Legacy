@@ -3,7 +3,7 @@
 
 <h1 class="hogwarts">Sign Up</h1>
 
-<div class="form-container">
+<div class="registration-form-container">
     <form method="POST">
     {% csrf_token %}
     
@@ -13,7 +13,7 @@
         {{ field }}
       </div>
     {% endfor %}
-    <button type="submit" class="form-submit">Sign Up</button>
+    <button type="submit" class="registration-form-submit">Sign Up</button>
     </form>
 </div>
 

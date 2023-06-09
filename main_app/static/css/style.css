@@ -79,10 +79,6 @@ h1 {
     color: #372e29;
 }
 
-form > table > tbody > tr > th > label {
-    color: black;
-}
-
 .card {
     width: 100%; 
     max-width: 500px;
@@ -106,8 +102,8 @@ form > table > tbody > tr > th > label {
     z-index: -1;
 }
 
-/* Puts Sign-Up Form in a Container */
-.form-container {
+/* Sign up and Login Form Styling Below */
+.registration-form-container {
     max-width: 400px;
     margin: 75px auto 0;
     padding: 30px;
@@ -115,8 +111,7 @@ form > table > tbody > tr > th > label {
     border-radius: 15px;
 }
       
-/* Styles the Sign-Up Form Submit button */
-.form-submit {
+.registration-form-submit {
     display: block;
     width: 100%;
     padding: 10px;
@@ -127,8 +122,7 @@ form > table > tbody > tr > th > label {
     cursor: pointer;
 }
 
-/* Styles Sign-Up Form Labels */
-.form-container label {
+.registration-form-container label {
     color: Teal;
     font-size: 1.3vmin;
 }
@@ -136,4 +130,35 @@ form > table > tbody > tr > th > label {
 /* Styles Sign-Up Form Error Message */
 .red-text {
     text-align: center;
+}
+
+/* Team Creation Form Styling Below */
+.team-form-container {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+
+.team-form-submit {
+    display: block;
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #0e1a40;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.team-form-container label {
+    color: #d3a625;
+    font-size: 1.3vmin;
+}
+
+.team-form-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
 }
