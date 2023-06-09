@@ -105,3 +105,35 @@ form > table > tbody > tr > th > label {
     left: 0;
     z-index: -1;
 }
+
+/* Puts Sign-Up Form in a Container */
+.form-container {
+    max-width: 400px;
+    margin: 75px auto 0;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+      
+/* Styles the Sign-Up Form Submit button */
+.form-submit {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: Teal;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Styles Sign-Up Form Labels */
+.form-container label {
+    color: Teal;
+    font-size: 1.3vmin;
+}
+
+/* Styles Sign-Up Form Error Message */
+.red-text {
+    text-align: center;
+}
