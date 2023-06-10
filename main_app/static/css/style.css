@@ -165,8 +165,7 @@ h1 {
     padding-top: 8px;
 }
 
-/* Broomstick Creation Form Styling */
-
+/* Broomstick Creation Form Styling Below */
 .broomstick-form-container {
     max-width: 400px;
     margin: 50px auto 0;
@@ -174,40 +173,6 @@ h1 {
     background-color: #f0f0f0;
     border-radius: 15px;
 }
-
-/* .team-form-container select {
-    text-align: center;
-    display: visible;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #bebebe;
-    color: orange;
-    color: #fff;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-family: 'HarryPotter7', sans-serif;
-} */
-
-.team-form-container select {
-    display: visible;
-    display: block;
-    padding: 15px;
-    text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  font-family: Arial, sans-serif;
-  font-size: 1.5vmin;
-  width: 400px;
-  height: 200px;
-} 
-
-/* .team-form-container select > option {
-    background-color: orange;
-} */
 
 .broomstick-form-container label {
     display: flex;
