@@ -68,8 +68,8 @@ class Broomstick(models.Model):
         return reverse('broomsticks_detail', kwargs={'pk': self.id})
 
 class Team(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=250)
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=50)
     players = models.ManyToManyField(Player)
     broomsticks = models.ManyToManyField(Broomstick)
     user=models.ForeignKey(User, on_delete=models.CASCADE)

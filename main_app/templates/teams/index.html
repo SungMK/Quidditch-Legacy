@@ -8,13 +8,7 @@
 <a href="{% url 'detail' team.id %}">
     <div class="card">
         <div class="card-content">
-            <p>Team Name: {{ team.name }}</p>
-            <p>Team Description: {{ team.description }}</p>
-            <p>Players:
-            {% for player in team.players.all %}
-                {{ player.name }},
-            {% endfor %}
-            </p>
+            <h5>{{ team.name }}</h1>
         </div>
     </div>
 </a>
