@@ -62,10 +62,10 @@ class Broomstick(models.Model):
     choice = models.CharField(max_length=100, choices=CHOICES, default='AWG')
 
     def __str__(self):
-        return f'{self.get_broomstick_display()}'
+        return f'{self.get_choice_display()}'
     
     def get_absolute_url(self):
-        return reverse('choices_detail', kwargs={'pk': self.id})
+        return reverse('broomsticks_detail', kwargs={'pk': self.id})
 
 class Team(models.Model):
     name = models.CharField(max_length=100)

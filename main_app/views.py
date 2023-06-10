@@ -131,7 +131,7 @@ class PlayerDelete(LoginRequiredMixin, DeleteView):
 
 class BroomstickCreate(LoginRequiredMixin, CreateView):
     model = Broomstick
-    fields = '__all__'
+    fields = ['choice']
 
 class BroomstickList(LoginRequiredMixin, ListView):
     model = Broomstick

@@ -9,13 +9,14 @@
     <h1 class="hogwarts">Add Broomstick</h1>
 {% endif %}
 
-<div class="team-form-container">
-    <form action="" method="post">
+<div class="broomstick-form-container">
+    <form action="" method="POST" autocomplete="off">
         {% csrf_token %}
-        <label for="Broomstick Choices">View Broomsticks: </label>
-        <input id="your_name" type="select" name="your_name" value="{{ current_name }}">
-        <div class="team-form-button">
-            <input class="btn blue" type="submit" value="{% if object %} Update Broomstick {% else %} Add Broomstick {% endif %}">
+        {{ form.as_table }}
+        <br>
+        <br>
+        <div class="broomstick-form-button">
+            <button type="submit" class="broomstick-form-submit">{% if object %} Update Broomstick {% else %} Add Broomstick {% endif %}</button>
         </div>
     </form>
 </div>

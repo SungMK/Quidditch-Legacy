@@ -164,3 +164,54 @@ h1 {
     justify-content: center;
     padding-top: 8px;
 }
+
+/* Broomstick Creation Form Styling */
+
+.broomstick-form-container {
+    max-width: 400px;
+    margin: 50px auto 0;
+    padding: 30px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+
+.broomstick-form-container label {
+    display: flex;
+    justify-content: center;
+    color: #d3a625;
+    font-size: 2vmin;
+    margin-bottom: 2vmin;
+}
+
+.broomstick-form-submit {
+    justify-content: center;
+    display: block;
+    padding: 15px 30px;
+    font-size: 16px;
+    background-color: #d3a625;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'HarryPotter7', sans-serif;
+}
+
+.broomstick-form-button {
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+}
+
+.broomstick-form-container select {
+    text-align: center;
+    display: visible;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #740001;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'HarryPotter7', sans-serif;
+}
