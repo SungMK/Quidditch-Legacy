@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="hogwarts">My Teams</h1>
+<h1 class="hogwarts">My Team</h1>
 <br>
 
 <div class="card">
@@ -65,6 +65,7 @@
             <form action="{% url 'assoc_player' team.id player.id %}" method="POST">
             {% csrf_token %}
                 <button type="submit" class="btn">Add Player</button>
+                <a href="{% url 'players_detail' player.id %}" class="btn indigo">Details</a>
             </form>
         </div>
         </div>
@@ -113,7 +114,8 @@
         <div class="card-action">
             <form action="{% url 'assoc_broomstick' team.id broomstick.id %}" method="POST">
             {% csrf_token %}
-                <button type="submit" class="btn">Add Broomstick</button>
+                <button type="submit" class="btn orange">Add Broomstick</button>
+                <a href="{% url 'broomsticks_detail' broomstick.id %}" class="btn indigo">Details</a>
             </form>
         </div>
         </div>
