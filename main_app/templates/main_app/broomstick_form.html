@@ -14,7 +14,6 @@
         {% csrf_token %}
         {{ form.as_table }}
         <br>
-        <br>
         <div class="broomstick-form-button">
             <button type="submit" class="broomstick-form-submit">{% if object %} Update Broomstick {% else %} Add Broomstick {% endif %}</button>
         </div>
