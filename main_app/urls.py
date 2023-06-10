@@ -15,6 +15,7 @@ urlpatterns = [
     path('teams/<int:team_id>/assoc_broomstick/<int:broomstick_id>/', views.assoc_broomstick, name='assoc_broomstick'), # Adds Broomstick Association
     path('teams/<int:team_id>/unassoc_broomstick/<int:broomstick_id>/', views.unassoc_broomstick, name='unassoc_broomstick'), # Removes Broomstick Association
     path('characters/', views.get_characters, name='characters_list'), # API Call to get all Characters
+    path('save-character/', views.save_character, name='save_character'), # Saves Player to database when form is submitted
     path('players/', views.PlayerList.as_view(), name='players_list'),# Player Index View
     path('players/<int:pk>/', views.PlayerDetail.as_view(), name='players_detail'), # Player Detail Page
     path('players/create/', views.PlayerCreate.as_view(), name='players_create'), # Creates Player

@@ -215,3 +215,12 @@ h1 {
     font-family: 'HarryPotter7', sans-serif;
     margin-bottom: 7px;
 }
+
+.save-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    background-color: #740001;
+}

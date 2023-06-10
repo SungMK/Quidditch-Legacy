@@ -73,22 +73,34 @@ def unassoc_broomstick(request, team_id, broomstick_id):
     return redirect('detail', team_id=team_id)
 
 # API Functions:
-
-# With Limit
-# @login_required
-# def get_characters(request, limit=500):
-#     url = f'https://hp-api.onrender.com/api/characters?limit={limit}'
-#     response = requests.get(url).json()
-#     characters = response[:limit]
-#     return render(request, 'main_app/players.html', {'characters': characters})
-
-# Without Limit
 @login_required
 def get_characters(request):
     url = 'https://hp-api.onrender.com/api/characters'
     response = requests.get(url).json()
     characters = response
     return render(request, 'main_app/characters_list.html', {'characters': characters})
+
+@login_required
+def save_character(request):
+    if request.method == 'POST':
+        character_name = request.POST.get('character_name')
+
+        # Creates a new Player instance with the character data
+        player = Player(name=character_name)
+
+        # Sets properties for Player based off form field values; sets default for booleans
+        player.species = request.POST.get('character_species')
+        player.gender = request.POST.get('character_gender')
+        player.house = request.POST.get('character_house')
+        player.wizard = request.POST.get('character_wizard', False)
+        player.hogwarts_student = request.POST.get('character_hogwarts_student', False)
+        player.hogwarts_staff = request.POST.get('character_hogwarts_staff', False)
+        player.alive = request.POST.get('character_alive', False)
+
+        # Saves the Player instance to the database
+        player.save()
+
+    return redirect('characters_list')  # Redirects to the character list page
 
 # Class-based Views:
 
