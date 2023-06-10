@@ -83,6 +83,7 @@ def unassoc_broomstick(request, team_id, broomstick_id):
 #     return render(request, 'main_app/players.html', {'characters': characters})
 
 # Without Limit
+@login_required
 def get_characters(request):
     url = 'https://hp-api.onrender.com/api/characters'
     response = requests.get(url).json()
@@ -94,7 +95,7 @@ def get_characters(request):
 # Team Functions:
 class TeamCreate(LoginRequiredMixin, CreateView):
 	model = Team
-	fields = ['name', 'description']
+	fields = ['name', 'description', 'players', 'broomsticks']
 
 	def form_valid(self, form):
 		form.instance.user = self.request.user
@@ -111,7 +112,7 @@ class TeamDelete(LoginRequiredMixin, DeleteView):
 # Player Functions:
 class PlayerCreate(LoginRequiredMixin, CreateView):
     model = Player
-    fields = ['name', 'species', 'gender', 'house']       
+    fields = ['name', 'species', 'gender', 'house']  
 
 class PlayerList(LoginRequiredMixin, ListView):
     model = Player
@@ -128,7 +129,6 @@ class PlayerDelete(LoginRequiredMixin, DeleteView):
     success_url = '/players/'
 
 # Broomstick Functions:
-
 class BroomstickCreate(LoginRequiredMixin, CreateView):
     model = Broomstick
     fields = ['choice']
