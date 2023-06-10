@@ -141,7 +141,7 @@ class BroomstickDetail(LoginRequiredMixin, DetailView):
 
 class BroomstickUpdate(LoginRequiredMixin, UpdateView):
     model = Broomstick
-    fields = '__all__'
+    fields = ['choice']
 
 class BroomstickDelete(LoginRequiredMixin, DeleteView):
     model = Broomstick
