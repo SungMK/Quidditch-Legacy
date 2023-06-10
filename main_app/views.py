@@ -26,7 +26,7 @@ def signup(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/teams/create')
+            return redirect('/')
         else:
             error_message = 'Invalid Signup - Try Again'
     # GET request
@@ -95,7 +95,7 @@ def get_characters(request):
 # Team Functions:
 class TeamCreate(LoginRequiredMixin, CreateView):
 	model = Team
-	fields = ['name', 'description', 'players', 'broomsticks']
+	fields = ['name', 'description']
 
 	def form_valid(self, form):
 		form.instance.user = self.request.user

@@ -13,6 +13,13 @@
             {{ player.name }}, 
             {% endfor %}
         </p>
+        <p>Broomsticks:
+            {% if broomsticks.count %}
+            {% for broomstick in team.broomsticks.all %}
+                {{ broomstick.get_choice_display }},
+            {% endfor %}
+            {% endif %}
+        </p>
     </div>
     <div class="card-action">
         <a href="{% url 'teams_update' team.id %}" class="btn cyan">Edit</a>
