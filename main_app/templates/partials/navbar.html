@@ -6,13 +6,33 @@
             </ul>
             <ul class="right">
             {% if user.is_authenticated %}
-                <li><a href="{% url 'teams_create' %}">Create a Team</a></li>
-                <li><a href="{% url 'index' %}">View My Teams</a></li>
-                <li><a href="{% url 'characters_list' %}">Add Players</a></li>
-                <li><a href="{% url 'players_create' %}">Create Custom Players</a></li>
-                <li><a href="{% url 'players_list' %}">View My Players</a></li>
-                <li><a href="{% url 'broomsticks_create' %}">Add Broomsticks</a></li>
-                <li><a href="{% url 'broomsticks_list' %}">View My Broomsticks</a></li>
+                <li>
+                    <a class='dropdown-trigger' href='#' data-target='teamsdropdown'>Teams</a>
+                    <ul id='teamsdropdown' class='dropdown-content' data-target="teamsdropdown" data-constrainwidth="false">
+                        <li><a href="{% url 'teams_create' %}">Create a Team</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="{% url 'index' %}">View My Teams</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class='dropdown-trigger' href='#' data-target='playersdropdown'>Players</a>
+                    <ul id='playersdropdown' class='dropdown-content' data-target="playersdropdown" data-constrainwidth="false">
+                        <li><a href="{% url 'characters_list' %}">Add Players</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="{% url 'players_create' %}">Create Custom Player</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="{% url 'players_list' %}">View My Teams</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class='dropdown-trigger' href='#' data-target='broomsticksdropdown'>Broomsticks</a>
+                    <ul id='broomsticksdropdown' class='dropdown-content' data-target="broomsticksdropdown" data-constrainwidth="false">
+                        <li><a href="{% url 'broomsticks_create' %}">Add Broomsticks</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                        <li><a href="{% url 'broomsticks_list' %}">View My Broomsticks</a></li>
+                        <li class="divider" tabindex="-1"></li>
+                    </ul>
+                </li>
                 <li><a href="{% url 'logout' %}">Logout</a></li>
             {% else %}
                 <li><a href="{% url 'about' %}">About</a></li>
@@ -24,3 +44,11 @@
         </div>
     </nav>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() { // Executes after HTML is loaded
+        const options = { hover: true, coverTrigger: false }; // Activate dropdown on hover and position below trigger
+        const elems = document.querySelectorAll('.dropdown-trigger'); // Selects dropdown-trigger class and assigns it to variable 'elems'
+        const instances = M.Dropdown.init(elems, options); // Initialize the dropdown functionality using the triggers and options
+    });
+</script>

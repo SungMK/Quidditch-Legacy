@@ -224,3 +224,13 @@ h1 {
 .save-button {
     background-color: #740001;
 }
+
+.dropdown-trigger:focus {
+    outline: none;
+}
+
+.dropdown-content li a {
+    font-family: 'HarryPotter7', sans-serif;
+    font-size: 1.5vmin;
+    color: #ecb939;
+}
