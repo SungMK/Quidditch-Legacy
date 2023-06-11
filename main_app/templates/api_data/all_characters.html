@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1 class="hogwarts">Add Characters to your List of Players!</h1>
+<div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a href="{% url 'all_characters' %}">All Characters</a></li>
+            <li class="tab col s3"><a href="{% url 'all_students' %}">All Students</a></li>
+            <li class="tab col s3"><a href="{% url 'all_staff' %}">All Staff</a></li>
+            <li class="tab col s3"></li>
+            <li class="tab col s3"><a href="{% url 'all_gryffindor' %}">Gryffindor</a></li>
+            <li class="tab col s3"><a href="{% url 'all_hufflepuff' %}">Hufflepuff</a></li>
+            <li class="tab col s3"><a href="{% url 'all_ravenclaw' %}">Ravenclaw</a></li>
+            <li class="tab col s3"><a href="{% url 'all_slytherin' %}">Slytherin</a></li>
+        </ul>
+    </div>
+</div>
 
 <div class="row">
     {% for character in characters %}
@@ -80,4 +93,9 @@
     {% endfor %}
 </div>
 
+<script>
+    const instance = M.Tabs.init(el, options);
+</script>
+
 {% endblock %}
+

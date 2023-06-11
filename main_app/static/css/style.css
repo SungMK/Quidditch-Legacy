@@ -1,6 +1,5 @@
 @import url('https://fonts.cdnfonts.com/css/harry-potter'); /* Harry Potter Font */
 @import url('https://fonts.cdnfonts.com/css/harrypotter7'); /* Blocky Harry Potter Font */
-@import url('https://fonts.cdnfonts.com/css/magic-school-one'); /* More Readable, Medieval Font */
 
 body {
     display: flex;
@@ -8,11 +7,6 @@ body {
     flex-direction: column;
     font-family: 'HarryPotter7', sans-serif;
     background-color: #bebebe;
-}
-
-.alternate-font {
-    font-family: 'Magic School One', sans-serif;
-    font-family: 'Magic School Two', sans-serif;
 }
 
 main {
@@ -67,6 +61,11 @@ h1 {
     text-align: center;
 }
 
+.search-instructions {
+    text-align: center;
+    font-family: 'Harry Potter', sans-serif;
+}
+
 .home-title {
     -webkit-text-stroke: 2px silver;
     color: #372e29;
@@ -89,6 +88,7 @@ h1 {
     height: 250px;
 }
 
+/* Homepage styling */
 .background-image {
     background-image: url("/static/HomepageBackground.jpg");
     background-size: cover;
@@ -216,6 +216,7 @@ h1 {
     margin-bottom: 7px;
 }
 
+/* Save button styling below */
 .save-button-container {
     display: flex;
     justify-content: center;
@@ -225,6 +226,7 @@ h1 {
     background-color: #740001;
 }
 
+/* Drop down styling below */
 .dropdown-trigger:focus {
     outline: none;
 }
@@ -233,4 +235,22 @@ h1 {
     font-family: 'HarryPotter7', sans-serif;
     font-size: 1.5vmin;
     color: #ecb939;
+    text-align: center;
+}
+
+/* Tabs styling below */
+.tabs {
+    height: 100%;
+    background-color: #740001;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+.tabs .tab a{
+    color: #ecb939;
+    font-size: 2vmin;
+}
+
+.tabs a {
+    font-size: 2vmin;
 }

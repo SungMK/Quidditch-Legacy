@@ -17,6 +17,10 @@ def about(request):
 def contact(request):
 	return render(request, 'contact.html')
 
+@login_required
+def characters(request):
+    return render(request, 'api_data/characters_list.html')
+
 def signup(request):
     # POST request
     error_message = ''
@@ -74,11 +78,53 @@ def unassoc_broomstick(request, team_id, broomstick_id):
 
 # API Functions:
 @login_required
-def get_characters(request):
+def get_all_characters(request):
     url = 'https://hp-api.onrender.com/api/characters'
     response = requests.get(url).json()
     characters = response
-    return render(request, 'main_app/characters_list.html', {'characters': characters})
+    return render(request, 'api_data/all_characters.html', {'characters': characters})
+
+@login_required
+def get_all_students(request):
+    url = 'https://hp-api.onrender.com/api/characters/students'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_students.html', {'characters': characters})
+
+@login_required
+def get_all_staff(request):
+    url = 'https://hp-api.onrender.com/api/characters/staff'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_staff.html', {'characters': characters})
+
+@login_required
+def get_all_gryffindor(request):
+    url = 'https://hp-api.onrender.com/api/characters/house/gryffindor'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_gryffindor.html', {'characters': characters})
+
+@login_required
+def get_all_hufflepuff(request):
+    url = 'https://hp-api.onrender.com/api/characters/house/hufflepuff'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_hufflepuff.html', {'characters': characters})
+
+@login_required
+def get_all_ravenclaw(request):
+    url = 'https://hp-api.onrender.com/api/characters/house/ravenclaw'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_ravenclaw.html', {'characters': characters})
+
+@login_required
+def get_all_slytherin(request):
+    url = 'https://hp-api.onrender.com/api/characters/house/slytherin'
+    response = requests.get(url).json()
+    characters = response
+    return render(request, 'api_data/all_slytherin.html', {'characters': characters})
 
 @login_required
 def save_character(request):
@@ -100,7 +146,7 @@ def save_character(request):
         # Saves the Player instance to the database
         player.save()
 
-    return redirect('characters_list')  # Redirects to the character list page
+    return redirect('players_list')  # Redirects to the character list page
 
 # Class-based Views:
 
