@@ -1,0 +1,1 @@
+web: gunicorn quidditch_legacy.wsgi
