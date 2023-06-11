@@ -10,15 +10,13 @@
         <p>Description: {{ team.description }}</p>
         <p>Players:
             {% for player in team.players.all %}
-            {{ player.name }}, 
+                {{ player.name }}, 
             {% endfor %}
         </p>
         <p>Broomsticks:
-            {% if broomsticks.count %}
             {% for broomstick in team.broomsticks.all %}
                 {{ broomstick.get_choice_display }},
             {% endfor %}
-            {% endif %}
         </p>
     </div>
     <div class="card-action">

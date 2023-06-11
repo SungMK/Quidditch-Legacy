@@ -106,55 +106,68 @@ def save_character(request):
 
 # Team Functions:
 class TeamCreate(LoginRequiredMixin, CreateView):
-	model = Team
-	fields = ['name', 'description']
+    model = Team
+    fields = ['name', 'description']
+    template_name = 'teams/team_form.html'
 
-	def form_valid(self, form):
-		form.instance.user = self.request.user
-		return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 	
 class TeamUpdate(LoginRequiredMixin, UpdateView):
-	model = Team
-	fields = ['name', 'description']
+    model = Team
+    fields = ['name', 'description']
+    template_name = 'teams/team_form.html'
 
 class TeamDelete(LoginRequiredMixin, DeleteView):
-	model = Team
-	success_url = '/teams/'
+    model = Team
+    success_url = '/teams/'
+    template_name = 'teams/team_confirm_delete.html'
 
 # Player Functions:
 class PlayerCreate(LoginRequiredMixin, CreateView):
     model = Player
-    fields = ['name', 'species', 'gender', 'house']  
+    fields = ['name', 'species', 'gender', 'house']
+    template_name = 'players/player_form.html'  
 
 class PlayerList(LoginRequiredMixin, ListView):
     model = Player
+    template_name = 'players/player_list.html'
 
 class PlayerDetail(LoginRequiredMixin, DetailView):
     model = Player
+    template_name = 'players/player_detail.html'
 
 class PlayerUpdate(LoginRequiredMixin, UpdateView):
     model = Player
-    fields = ['name', 'species', 'gender', 'house']   
+    fields = ['name', 'species', 'gender', 'house']
+    template_name = 'players/player_form.html'  
 
 class PlayerDelete(LoginRequiredMixin, DeleteView):
     model = Player
     success_url = '/players/'
+    template_name = 'players/player_confirm_delete.html'
 
 # Broomstick Functions:
 class BroomstickCreate(LoginRequiredMixin, CreateView):
     model = Broomstick
     fields = ['choice']
+    template_name = 'broomsticks/broomstick_form.html'
 
 class BroomstickList(LoginRequiredMixin, ListView):
     model = Broomstick
+    template_name = 'broomsticks/broomstick_list.html'
 
 class BroomstickDetail(LoginRequiredMixin, DetailView):
     model = Broomstick
+    template_name = 'broomsticks/broomstick_detail.html'
 
 class BroomstickUpdate(LoginRequiredMixin, UpdateView):
     model = Broomstick
     fields = ['choice']
+    template_name = 'broomsticks/broomstick_form.html'
 
 class BroomstickDelete(LoginRequiredMixin, DeleteView):
     model = Broomstick
     success_url = '/broomsticks/'
+    template_name = 'broomsticks/broomstick_confirm_delete.html'
