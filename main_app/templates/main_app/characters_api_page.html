@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class="hogwarts">Add Characters to your List of Players!</h1>
+
+<div class="row">
+    {% for character in characters %}
+    <div class="col s12 m6 l3"> <!-- Adjusts the column width for mobile(s), tablets(m), and desktops(l) -->
+        <div class="card">
+            <div class="card-image">
+                {% if character.image != "" %}
+                    <img src="{{ character.image }}" alt="{{ character.name }}">
+                {% else %}
+                    <img src="../../static/placeholder.jpg" alt="Placeholder Image">
+                {% endif %}
+                <span class="card-title">{{ character.name }}</span>
+            </div>
+            <div class="card-content">
+                <p><strong>Species:</strong> {{ character.species }}</p>
+                <p><strong>Gender:</strong> {{ character.gender }}</p>
+                <p><strong>House:</strong> 
+                    {% if character.house == "Gryffindor" %}
+                        <span style="color: #740001;">{{ character.house }}</span>
+                    {% elif character.house == "Slytherin" %}
+                        <span style="color: #1a472a;">{{ character.house }}</span>
+                    {% elif character.house == "Ravenclaw" %}
+                        <span style="color: #0e1a40;">{{ character.house }}</span>
+                    {% elif character.house == "Hufflepuff" %}
+                        <span style="color: #ecb939;">{{ character.house }}</span>
+                    {% elif character.house == "" %}
+                        N/A
+                    {% endif %}
+                </p>
+                <p><strong>Wizard:</strong> 
+                    {% if character.wizard %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Hogwarts Student:</strong> 
+                    {% if character.hogwartsStudent %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Hogwarts Staff:</strong> 
+                    {% if character.hogwartsStaff %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <p><strong>Alive:</strong> 
+                    {% if character.alive %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </p>
+                <br>
+                <div class='save-button-container'>
+                    <form action="/save-character/" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="character_name" value="{{ character.name }}">
+                        <input type="hidden" name="character_species" value="{{ character.species }}">
+                        <input type="hidden" name="character_gender" value="{{ character.gender }}">
+                        <input type="hidden" name="character_house" value="{{ character.house }}">
+                        <input type="hidden" name="character_wizard" value="{{ character.wizard }}">
+                        <input type="hidden" name="character_hogwarts_student" value="{{ character.hogwartsStudent }}">
+                        <input type="hidden" name="character_hogwarts_staff" value="{{ character.hogwartsStaff }}">
+                        <input type="hidden" name="character_alive" value="{{ character.alive }}">
+                        <button class="btn waves-effect waves-light save-button " type="submit">Add</button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
