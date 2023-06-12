@@ -79,10 +79,10 @@ def unassoc_broomstick(request, team_id, broomstick_id):
 # API Functions:
 @login_required
 def get_all_characters(request):
-    url = 'https://hp-api.onrender.com/api/characters'
-    response = requests.get(url).json()
-    characters = response
-    return render(request, 'api_data/all_characters.html', {'characters': characters})
+    url = 'https://hp-api.onrender.com/api/characters' # API endpoint set to variable named 'url'
+    response = requests.get(url).json() # Sends HTTP GET request using 'requests' library. Response parsed as JSON
+    characters = response # JSON data assigned to variable named 'characters'
+    return render(request, 'api_data/all_characters.html', {'characters': characters}) # Renders template with context dictionary of 'characters'
 
 @login_required
 def get_all_students(request):
@@ -128,11 +128,10 @@ def get_all_slytherin(request):
 
 @login_required
 def save_character(request):
-    if request.method == 'POST':
-        character_name = request.POST.get('character_name')
+    if request.method == 'POST': # Checks if request is POST
+        character_name = request.POST.get('character_name') # Retrieves value associated with 'character_name' field
 
-        # Creates a new Player instance with the character data
-        player = Player(name=character_name)
+        player = Player(name=character_name) # New player instance created with the name from form field
 
         # Sets properties for Player based off form field values; sets default for booleans
         player.species = request.POST.get('character_species')
@@ -143,8 +142,7 @@ def save_character(request):
         player.hogwarts_staff = request.POST.get('character_hogwarts_staff', False)
         player.alive = request.POST.get('character_alive', False)
 
-        # Saves the Player instance to the database
-        player.save()
+        player.save() # Saves the Player instance to the database
 
     return redirect('players_list')  # Redirects to the character list page
 
